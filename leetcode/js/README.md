@@ -1,10 +1,10 @@
 <!--
  * @Author: Merlynr
  * @Date: 2022-03-17 16:21:10
- * @LastEditTime: 2022-03-17 16:34:32
+ * @LastEditTime: 2022-03-17 21:24:55
  * @LastEditors: your name
  * @Description: 步骤
- * @FilePath: \js\RNAME.md
+ * @FilePath: \byYourself\leetcode\js\README.md
  * 少年强，中国强！
 -->
 
@@ -20,6 +20,8 @@
 树与递归
 哈希表
 双指针
+
+1、![array_easy_1](https://gitee.com/merlynr/img-store/raw/master/20223/1647523411883.png)
 ## 思想篇（30 天）
 这些思想是投资回报率极高的，强烈推荐每一个小的专题花一定的时间掌握。
 
@@ -38,3 +40,4 @@ KMP & RK
 前缀树
 线段树
 堆
+
