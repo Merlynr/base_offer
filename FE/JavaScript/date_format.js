@@ -9,3 +9,10 @@ leak_m.leak();
 leak_m.outer();
 let end = Date.now();
 console.log(end-start);
+
+
+// format
+
+console.log(date1.toDateString());
+console.log(date.toLocaleTimeString(),date.toLocaleDateString());
+console.log(date.toUTCString());
