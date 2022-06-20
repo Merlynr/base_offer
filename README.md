@@ -1,7 +1,7 @@
 <!--
  * @Author: Merlynr
  * @Date: 2022-03-17 16:53:40
- * @LastEditTime: 2022-05-16 17:17:18
+ * @LastEditTime: 2022-05-16 21:21:50
  * @LastEditors: your name
  * @Description: 
  * @FilePath: \byYourself\README.md
@@ -40,6 +40,7 @@
 11. [50 Projects in 50 Days](https://github.com/bradtraversy/50projects50days)
 12. [适合前端新手学习的‘星空’聊天室项目](https://github.com/genaller/genal-chat)
 13. [复制功能](https://github.com/zenorocha/clipboard.js)
+14. **看源码之前必须看设计模式**
 
 ## 阶段二.Advanced
 1. [学习中SCSS的实现即可](https://github.com/miniMAC/magic)
