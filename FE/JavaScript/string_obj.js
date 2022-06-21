@@ -33,3 +33,45 @@ console.log(stringIterator.next()); // {value: undefined, done: true}\
 for (const c of "abcde") {
     console.log(c);
     }
+
+
+// 特殊的序列，可以在替换文本中使用之前匹配的内容
+let text = "cast, bat, sat, fat";
+result = text.replace(/(.at)/g, "word ($1)");
+console.log(result); // word (cat), word (bat), word (sat), word (fat)
+
+
+function htmlEscape(text) {
+    return text.replace(/[<>"&]/g, function(match, pos, originalText) {
+    switch(match) {
+    case "<":
+    return "&lt;";
+    case ">":
+    return "&gt;";
+    case "&":
+    return "&amp;";
+    case "\"":
+    return "&quot;";
+    }
+    });
+    }
+let text_hE = "我是<就是\sjj&"
+console.log(htmlEscape(text_hE)); 
+
+//  localeCompare() ，这个方法比较两个字符串
+function determineOrder(value) {
+    let result = stringValue.localeCompare(value);
+    if (result < 0) {
+    console.log(`The string 'yellow' comes before the string '${value}'.`);
+    } else if (result > 0) {
+    console.log(`The string 'yellow' comes after the string '${value}'.`);
+    } else {
+    console.log(`The string 'yellow' is equal to the string '${value}'.`);
+    }
+    }
+    determineOrder("brick");
+    determineOrder("Yellow");
+    determineOrder("zoo");
+
+console.log(text_hE.big());
+
