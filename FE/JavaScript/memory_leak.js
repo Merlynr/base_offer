@@ -1,4 +1,4 @@
-let leak =  function leakName(){
+let leak = function leakName() {
     name = "leak";
     console.log('llleak');
 }
@@ -11,11 +11,11 @@ let leak =  function leakName(){
 // },100);
 
 // 闭包
-let outer = function(){
+let outer = function () {
     let name1 = 'jaker';
     console.log('ooouter');
-    
-    return function(){
+
+    return function () {
         return name1;
     };
 };
