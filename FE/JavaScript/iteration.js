@@ -121,5 +121,67 @@ function* nTimes(n) {
   }
 }
 for (const x of nTimes(3)) {
-  console.log(x);//0 1 2
+  console.log(x); //0 1 2
 }
+let book = {
+  year_: 2017,
+  edition: 1,
+};
+Object.defineProperty(book, "year", {
+  get() {
+    return this.year_;
+  },
+  set(newValue) {
+    if (newValue > 2017) {
+      this.year_ = newValue;
+      this.edition += newValue - 2017;
+    }
+  },
+});
+book.year = 2018;
+console.log(book.edition); //2
+console.log(book.edition); //2
+
+let book1 = {};
+Object.defineProperties(book1, {
+  year_: {
+    value: 2017,
+  },
+  edition: {
+    value: 1,
+  },
+  year: {
+    get: function () {
+      return this.year_;
+    },
+    set: function (newValue) {
+      if (newValue > 2017) {
+        this.year_ = newValue;
+        this.edition += newValue - 2017;
+      }
+    },
+  },
+});
+let decriptor = Object.getOwnPropertyDescriptor(book, "year_");
+let decriptor1 = Object.getOwnPropertyDescriptor(book1, "year_");
+console.log(decriptor);
+console.log(decriptor1);
+
+let dest, src, result;
+/**
+ * 简单复制
+ */
+dest = {};
+src = { id: "src" };
+result = Object.assign(dest, src);
+// Object.assign 修改目标对象
+// 也会返回修改后的目标对象
+console.log(src);
+console.log(dest === result); // true
+console.log(dest !== src); // true
+console.log(result); // { id: src }
+src.id = "sdsa";
+console.log(dest === result); // true
+console.log(dest !== src); // true
+console.log(src.id); // { id: src }
+console.log(dest.id);
