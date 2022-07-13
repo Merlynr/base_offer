@@ -1,8 +1,8 @@
 /*
  * @Author: Merlynr 
  * @Date: 2022-07-13 16:18:18 
- * @Last Modified by: Merlynr
- * @Last Modified time: 2022-07-13 17:30:30
+ * @Last Modified by: mikey.zhaopeng
+ * @Last Modified time: 2022-07-13 19:20:49
  */
 // * 继承类
 class Vehicle {
@@ -83,11 +83,55 @@ class DerivedClass_1 extends BaseClass {
 
 // ! 继承内置引用类型
 
-class SuperArray extends Array{
-    shuffle(){
-        for(let i = this.length-1 ;i>0;i--){
-            const j  = Math.floor(Math.random()*(i+1));
-            this[i] = this[i]^this[j]
+class SuperArray extends Array {
+    shuffle() {
+        for (let i = this.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [this[i],this[j]] = [this[j],this[i]]
         }
     }
 }
+
+let a = new SuperArray(1, 2, 3, 4, 5, 6)
+
+console.log(a instanceof Array);
+console.log(a instanceof SuperArray);
+
+console.log(a);
+a.shuffle()
+console.log(a);
+
+// 类混入
+
+class MoreClass{}
+
+let Mixin1Func = (SuperClass)=> class extends SuperClass{
+    mixin1(){
+        console.log('mix1');
+    }
+}
+
+let Mixin2Func = (SuperClass)=> class extends SuperClass{
+    mixin2(){
+        console.log('mix2');
+    }
+}
+let Mixin3Func = (SuperClass)=> class extends SuperClass{
+    mixin3(){
+        console.log('mix3');
+    }
+}
+
+class Son extends Mixin1Func(Mixin2Func(Mixin3Func(MoreClass))){}
+
+// 嵌套展开
+
+function mix(BaseClass,...Mixins) {
+    return Mixins.reduce((accumulator,current)=>current(accumulator),BaseClass)
+}
+
+let s =new Son()
+
+s.mixin1()
+s.mixin2()
+s.mixin3()
