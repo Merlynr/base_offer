@@ -1,3 +1,9 @@
+/*
+ * @Author: Merlynr 
+ * @Date: 2022-07-13 08:46:11 
+ * @Last Modified by:   Merlynr 
+ * @Last Modified time: 2022-07-13 08:46:11 
+ */
 console.log("HHHHHH");
 function SuperType(name) {
     this.property = true;
