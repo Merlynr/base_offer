@@ -1,8 +1,8 @@
 /*
  * @Author: Merlynr 
  * @Date: 2022-07-13 08:46:11 
- * @Last Modified by:   Merlynr 
- * @Last Modified time: 2022-07-13 08:46:11 
+ * @Last Modified by: Merlynr
+ * @Last Modified time: 2022-07-13 09:41:51
  */
 console.log("HHHHHH");
 function SuperType(name) {
@@ -24,7 +24,19 @@ function SubType(name, age) {
     this.age = age
 }
 // 继承
-SubType.prototype = new SuperType();
+// SubType.prototype = new SuperType();\
+/**
+ * 寄生组合模式
+ * @param  {} subType
+ * @param  {} superType
+ */
+function inheritPrototype(subType, superType) {
+    let prototype = Object.create(superType.prototype)  // ? 复制原型对象
+    prototype.constructor = subType  // ? sup的原型对象的构造函数指向 sub
+    subType.prototype = prototype //? 形成原型链，sub.pro=sup.pro实现继承，sub.pro.const = sub
+}
+// 寄生式组合继承
+inheritPrototype(SubType, SuperType);
 
 SubType.prototype.getSubValue = function () {
     return this.subproperty;
