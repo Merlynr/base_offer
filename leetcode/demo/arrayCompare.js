@@ -1,6 +1,12 @@
+/*
+ * @Author: Merlynr
+ * @Date: 2022-07-20 23:46:09
+ * @Last Modified by:   Merlynr
+ * @Last Modified time: 2022-07-20 23:46:09
+ */
 // right method
 function rightMethod(arr) {
-  if (Array.isArray(arr) && JSON.stringify(arr) !== "[]") {
+  if (Array.isArray(arr) && arr.length > 1) {
     arr.sort((a, b) => {
       return a - b;
     });
@@ -9,22 +15,21 @@ function rightMethod(arr) {
 // random Array
 function generateRandomArray(maxSize, maxValue) {
   let random_arr = new Array(Math.floor((maxSize + 1) * Math.random()));
-  for (let i = 0; i < random_arr.length; i++) {
+  for (let i = 0, len = random_arr.length; i < len; i++) {
     random_arr[i] = Math.floor(Math.random() * (maxValue + 1));
   }
   return random_arr;
 }
-
 // 硬拷贝数组
 function copyArr(arr) {
-  if (Array.isArray(arr) && JSON.stringify(arr) !== "[]") {
+  if (Array.isArray(arr) && arr.length > 1) {
     return [...arr];
   }
 }
 
 // isEqual
 function isEqual(arr1, arr2) {
-  if (arr1.length !== arr2.length) {
+  if (arr1.length != arr2.length) {
     return false;
   }
   if (arr1 ^ arr2) {
@@ -41,17 +46,17 @@ function isEqual(arr1, arr2) {
   return true;
 }
 
-function Test() {
-  let testTimes = 5000;
-  let maxSize = 99;
-  let maxValue = 99;
+function test(tt, ms, mv, sortFunc) {
+  let testTimes = tt;
+  let maxSize = ms;
+  let maxValue = mv;
   let succeed = true;
   console.log("🚀 ~ file: rightMethod.js ~ ~ Test ~ Starting");
   let sum_t1 = 0.0,
     sum_t2 = 0.0;
   while (testTimes > 0) {
     let arr = generateRandomArray(maxSize, maxValue);
-    if (arr.length == 0) {
+    if (arr.length < 2) {
       continue;
     }
     let arr1 = copyArr(arr);
@@ -63,7 +68,7 @@ function Test() {
     sum_t1 += t1_e - t1;
 
     var t2 = performance.now();
-    bubbleSort(arr2);
+    arr2 = sortFunc(arr2);
     var t2_e = performance.now();
     sum_t2 += t2_e - t2;
 
@@ -74,7 +79,7 @@ function Test() {
     }
     --testTimes;
   }
-  console.log("🚀 ~ file: rightMethod.js ~ ~ Test ~ Starting");
+  console.log("🚀 ~ file: rightMethod.js ~ ~ Test ~ Ending");
   console.log(
     succeed
       ? `🌞${testTimes} epochs ：Bubble spent time ${sum_t1}ms
@@ -82,25 +87,7 @@ function Test() {
       : "Error"
   );
 }
-
-// 冒泡排序
-function bubbleSort(arr) {
-  if (Array.isArray(arr) && JSON.stringify(arr) !== "[]") {
-    for (let end = arr.length - 1; end > 0; end--) {
-      for (let i = 0; i < end; i++) {
-        if (arr[i] > arr[i + 1]) {
-          swap(arr, i, i + 1);
-        }
-      }
-    }
-  }
-}
-
-// 交换
-function swap(array, left, right) {
-  array[left] ^= array[right];
-  array[right] ^= array[left];
-  array[left] ^= array[right];
-}
-
-Test();
+// * 目前四个排序算法 bubbleSort,selectionSort,InsertSort,insertSort,mergeSort
+// TODO 计时器应该还存在问题
+const sortFunc = require("./tenSort");
+test(99999, 99, 99, sortFunc.insertSort);
