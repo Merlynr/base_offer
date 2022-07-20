@@ -1,0 +1,91 @@
+<button id="start">Start</button>
+<button id="cancel">Cancel</button>
+
+<script>
+  class CancelToken {
+    constructor(cancelFn) {
+      this.promise = new Promise((resolve, reject) => {
+        cancelFn(() => {
+          setTimeout(console.log, 0, "delay cancelled");
+          resolve();
+        });
+      });
+    }
+  }
+
+  const startButton = document.querySelector("#start");
+  const cancelButton = document.querySelector("#cancel");
+
+  function cancellableDelayedResolve(delay) {
+    setTimeout(console.log, 0, "set delay");
+    return new Promise((resolve, reject) => {
+      const id = setTimeout(() => {
+        setTimeout(console.log, 0, "delayed resolve");
+        resolve();
+      }, delay);
+      const cancelToken = new CancelToken((cancelCallback) =>
+        cancelButton.addEventListener("click", cancelCallback)
+      );
+      cancelToken.promise.then(() => clearTimeout(id));
+    });
+  }
+  startButton.addEventListener("click", () => cancellableDelayedResolve(1000));
+</script>
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="author" content="Yeeku.H.Lee(CrazyIt.org)" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>使用定时器</title>
+  </head>
+  <body onload="setTime();">
+    <span id="tm"></span>
+    <script type="text/javascript">
+      // 定义定时器变量
+      var timer;
+      // 保存页面运行的起始时间
+      var cur = new Date().getTime();
+      var setTime = function () {
+        // 在tm元素中显示当前时间
+        document.getElementById("tm").innerHTML = new Date().toLocaleString();
+        // 如果当前时间比起始时间大于60秒，停止定时器的调度
+        if (new Date().getTime() - cur > 60 * 1000) {
+          // 清除timer定时器
+          clearInterval(timer);
+        }
+      };
+      // 指定每隔1000毫秒执行setTime()函数一次
+      timer = setInterval("setTime();", 1000);
+    </script>
+  </body>
+</html>
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="author" content="Yeeku.H.Lee(CrazyIt.org)" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>使用定时器</title>
+  </head>
+  <body>
+    <span id="tm"></span>
+    <script type="text/javascript">
+      // 定义定时器变量
+      var timer;
+      // 保存页面运行的起始时间
+      var cur = new Date().getTime();
+      var setTime = function () {
+        // 在tm元素中显示当前时间
+        document.getElementById("tm").innerHTML = new Date().toLocaleString();
+        // 如果当前时间比起始时间小于等于60秒，执行定时器的调度
+        if (new Date().getTime() - cur <= 60 * 1000) {
+          // 指定延迟1000毫秒后执行setTime()函数。
+          window.setTimeout("setTime();", 1000);
+        }
+      };
+      // 直接调用setTime()函数
+      setTime();
+    </script>
+  </body>
+</html>
