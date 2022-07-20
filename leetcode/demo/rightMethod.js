@@ -42,7 +42,7 @@ function isEqual(arr1, arr2) {
 }
 
 function Test() {
-  let testTimes = 500000;
+  let testTimes = 5000;
   let maxSize = 99;
   let maxValue = 99;
   let succeed = true;
@@ -77,8 +77,8 @@ function Test() {
   console.log("🚀 ~ file: rightMethod.js ~ ~ Test ~ Starting");
   console.log(
     succeed
-      ? `🌞${testTimes} epochs ：Bubble spent time ${sum_t1}ms\n
-      Array.sort() spent time ${sum_t2}ms\n`
+      ? `🌞${testTimes} epochs ：Bubble spent time ${sum_t1}ms
+      Array.sort() spent time ${sum_t2}ms`
       : "Error"
   );
 }
