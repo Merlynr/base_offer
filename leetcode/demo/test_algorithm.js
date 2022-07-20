@@ -87,15 +87,15 @@ function Test() {
     let arr2 = copyArr(arr);
     // insertSort(arr1);
     console.log(arr1);
-    
-    quickSort_2.quickSort_2(arr1)
+
+    quickSort_2.quickSort_2(arr1);
     rightMethod(arr2);
     if (!isEqual(arr1, arr2)) {
       succeed = false;
       console.log(arr1);
       break;
     }
-    console.log(testTimes)
+    console.log(testTimes);
     --testTimes;
   }
   console.log(succeed ? "succeed" : "Error");
