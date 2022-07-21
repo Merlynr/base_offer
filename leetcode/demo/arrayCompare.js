@@ -1,8 +1,8 @@
 /*
  * @Author: Merlynr
  * @Date: 2022-07-20 23:46:09
- * @Last Modified by:   Merlynr
- * @Last Modified time: 2022-07-20 23:46:09
+ * @Last Modified by: Merlynr
+ * @Last Modified time: 2022-07-21 21:41:54
  */
 // right method
 function rightMethod(arr) {
@@ -10,6 +10,7 @@ function rightMethod(arr) {
     arr.sort((a, b) => {
       return a - b;
     });
+    return arr;
   }
 }
 // random Array
@@ -63,18 +64,19 @@ function test(tt, ms, mv, sortFunc) {
     let arr2 = copyArr(arr);
     // ! 函数比较
     let t1 = performance.now();
-    rightMethod(arr1);
+    arr1 = rightMethod(arr1);
+
     let t1_e = performance.now();
     sum_t1 += t1_e - t1;
 
     var t2 = performance.now();
-    arr2 = sortFunc(arr2);
+    arr2 = sortFunc(arr2, 0, arr2.length - 1);
     var t2_e = performance.now();
     sum_t2 += t2_e - t2;
 
     if (!isEqual(arr1, arr2)) {
       succeed = false;
-      console.log(arr1, arr2);
+      console.log(arr2);
       break;
     }
     --testTimes;
@@ -89,5 +91,5 @@ function test(tt, ms, mv, sortFunc) {
 }
 // * 目前四个排序算法 bubbleSort,selectionSort,InsertSort,insertSort,mergeSort
 // TODO 计时器应该还存在问题
-const sortFunc = require("./tenSort");
-test(99999, 99, 99, sortFunc.insertSort);
+const sortFunc = require("./quick_sort");
+test(99999, 99, 99, sortFunc.quickSort_3);
