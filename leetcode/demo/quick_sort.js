@@ -57,31 +57,29 @@ var quickSort_2 = function (arr) {
 //随机选择基准,因为有随机选择，所以时间复杂度为O（N*logN）
 var quickSort_3 = function (arr, L, R) {
   if (L < R) {
-    swaps(arr, L + Math.round(Math.random() * (R - L + 1)), R);
+    swaps(arr, L + Math.floor(Math.random() * (R - L + 1)), R);
 
     let p = partition(arr, L, R); //为数组的边界
     quickSort_3(arr, L, p[0] - 1);
     quickSort_3(arr, p[1] + 1, R);
   }
-  return arr
+  return arr;
 };
 
-function partition(arr,L,R) {
-  let less=L-1;
-  let more=R+1;
-  let idx=L;
-  for(;idx<more;){
-      if (arr[idx]<arr[R]){
-          swaps(arr,++less,idx++);//less先+1再交换，idx先交换再+1
-      }
-      else  if(arr[idx]>arr[R]){
-          swaps(arr,--more,idx);
-      }
-      else {
-          idx++;
-      }
+function partition(arr, L, R) {
+  let less = L - 1;
+  let more = R + 1;
+  let idx = L;
+  for (; idx < more; ) {
+    if (arr[idx] < arr[R]) {
+      swaps(arr, ++less, idx++); //less先+1再交换，idx先交换再+1
+    } else if (arr[idx] > arr[R]) {
+      swaps(arr, --more, idx);
+    } else {
+      idx++;
+    }
   }
-  return [less+1,more-1];
+  return [less + 1, more - 1];
 }
 var swapArr = function (arr, l, r) {
   arr[l] ^= arr[r];
@@ -98,10 +96,10 @@ var swaps = function (arr, l, r) {
 // let qs_1 = (arr) => {
 //   return quickSort_1(arr);
 // };
-let arr = [3, 1, 4, 1, 5, 9, 2, 6];
+let arr = [3, 1, 2, 4, 1, 5, 9, 2, 6];
 // console.log(quickSort_1([3, 1, 4, 1, 5, 9, 2, 6]));
 // console.log(quickSort_2([3, 1, 4, 1, 5, 9, 2, 6]));
-console.log(quickSort_3(arr,0,arr.length-1));
+// console.log(quickSort_3(arr, 0, arr.length - 1));
 // swaps(arr,1,4)
 // console.log(arr);
 
