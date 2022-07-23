@@ -2,7 +2,7 @@
  * @Author: Merlynr
  * @Date: 2022-07-20 23:46:09
  * @Last Modified by: Merlynr
- * @Last Modified time: 2022-07-21 21:41:54
+ * @Last Modified time: 2022-07-23 21:36:00
  */
 // right method
 function rightMethod(arr) {
@@ -27,7 +27,6 @@ function copyArr(arr) {
     return [...arr];
   }
 }
-
 // isEqual
 function isEqual(arr1, arr2) {
   if (arr1.length != arr2.length) {
@@ -46,7 +45,6 @@ function isEqual(arr1, arr2) {
   }
   return true;
 }
-
 function test(tt, ms, mv, sortFunc) {
   let testTimes = tt;
   let maxSize = ms;
@@ -70,7 +68,18 @@ function test(tt, ms, mv, sortFunc) {
     sum_t1 += t1_e - t1;
 
     var t2 = performance.now();
-    arr2 = sortFunc(arr2, 0, arr2.length - 1);
+    // * common sort func
+    // arr2 = sortFunc(arr);
+    // * shellSort
+    // arr2 = sortFunc(arr2, 0, arr2.length - 1);
+    // * heapSort
+    // arr2 = sortFunc(arr2, arr2.length);
+    // * countingSort
+    // arr2 = sortFunc(arr2, maxValue);
+    // * bucketSort
+    // arr2 = sortFunc(arr2, 10);
+    // * radixSort
+    arr2 = sortFunc(arr2, 99);
     var t2_e = performance.now();
     sum_t2 += t2_e - t2;
 
@@ -91,5 +100,5 @@ function test(tt, ms, mv, sortFunc) {
 }
 // * 目前四个排序算法 bubbleSort,selectionSort,InsertSort,insertSort,mergeSort
 // TODO 计时器应该还存在问题
-const sortFunc = require("./quick_sort");
-test(99999, 99, 99, sortFunc.quickSort_3);
+const sortFunc = require("./tenSort");
+test(99999, 99, 99, sortFunc.radixSort);
