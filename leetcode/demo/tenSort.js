@@ -2,7 +2,7 @@
  * @Author: Merlynr
  * @Date: 2022-07-20 23:32:54
  * @Last Modified by: Merlynr
- * @Last Modified time: 2022-07-23 21:48:25
+ * @Last Modified time: 2022-07-23 21:49:06
  */
 
 exports.bubbleSort = bubbleSort;
@@ -335,7 +335,7 @@ function radixSort(arr) {
   let m = 1;
   // * 根据基数进行位数次读写操作
   while (m <= max) {
-    // m < 最大值
+    // m <= 最大值
     // 下方m要 m*=10 -> 每次遍历增加一位
     // 保证遍历完所有可能的位数
 
