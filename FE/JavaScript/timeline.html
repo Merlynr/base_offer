@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HH</title>
+    <link rel="stylesheet" href="base.css" />
+  </head>
+  <body>
+    <div class="mClass">TIME</div>
+    <style>
+      /* @import url(base.css); */
+    </style>
+    <script>
+      performance.mark("foo");
+      for (let i = 0; i < 1e6; i++) {}
+      performance.mark("bar");
+      performance.measure("baz", "foo", "bar");
+      const [endMark, startMark] = performance.getEntriesByType("mark");
+      const [differenceMark] = performance.getEntriesByType("measure");
+      console.log(
+        "🚀 ~ file: timeline.html ~ line 15 ~ differenceMark",
+        differenceMark
+      );
+      console.log(startMark.startTime - endMark.startTime);
+      //   计算页面加载时间
+      const [performanceNavigationTimingEntry] =
+        performance.getEntriesByType("navigation");
+      console.log(
+        "🚀 ~ file: timeline.html ~ line 21 ~ performanceNavigationTimingEntry",
+        performanceNavigationTimingEntry
+      );
+      console.log(
+        performanceNavigationTimingEntry.loadEventEnd -
+          performanceNavigationTimingEntry.loadEventStart
+      );
+      //   计算资源加载时间
+      const performanceResourceTimingEntry =
+        performance.getEntriesByType("resource")[0];
+      console.log(performanceResourceTimingEntry);
+      console.log(
+        performanceResourceTimingEntry.responseEnd -
+          performanceResourceTimingEntry.requestStart
+      );
+    </script>
+  </body>
+</html>

@@ -2,11 +2,7 @@
  * @Author: Merlynr
  * @Date: 2022-07-24 17:47:39
  * @Last Modified by: Merlynr
-<<<<<<< HEAD
- * @Last Modified time: 2022-07-28 19:45:33
-=======
- * @Last Modified time: 2022-07-28 09:24:35
->>>>>>> 3eae5cfbece4952ef497fb252913d56322f7662b
+ * @Last Modified time: 2022-07-28 19:47:29
  */
 
 class Node {
@@ -28,6 +24,30 @@ class LinkedList {
       this.len = 1;
     }
   }
+  find(val) {
+    let current = this.head;
+    while (current && current.val !== val) {
+      current = current.next;
+    }
+    return current;
+  }
+  findOfIndex(idx) {
+    if (idx < 0 || idx > this.len) {
+      throw new Error("不存在");
+    }
+    if (idx === 0) {
+      return this.head;
+    }
+    let i = 0;
+    let current = this.head;
+    while (current.val) {
+      if (i === idx) {
+        return current;
+      }
+      current = current.next;
+      i++;
+    }
+  }
 
   append(val) {
     const node = new Node(val);
@@ -43,6 +63,7 @@ class LinkedList {
     }
     this.len += 1;
   }
+
   insert(pos, val) {
     if (pos > this.len || pos < 0) {
       throw new Error("插入位置不合理");
@@ -66,41 +87,54 @@ class LinkedList {
     }
     this.len++;
   }
-  removeAt(pos) {
-    if (pos >= this.len || pos < 0) {
-      return new Error("结点位置不存在");
+  // 删除值
+  remove(val) {
+    if (!this.find(val)) {
+      return;
     }
+    if (val === this.head) {
+      this.head = this.head.next;
+      this.len--;
+      return;
+    }
+
     let current = this.head;
-    if (pos === 0) {
-      this.head = current.next;
-    } else {
-      let index = 0;
-      let prev = null;
-      while (index < pos) {
-        prev = current;
-        current = current.next;
-        index++;
-      }
-      prev.next = current.next; // 改变上一个节点的 next 指向
-      this.len--
-      return 
-    }
-    this.
-  }
-  indexOf(val, start = 0) {
-    if (start >= this.len) {
-      throw new Error("起始位置不合理");
-    }
-    let index = 0;
-    let current = this.head;
-    while (index < this.len) {
-      if (current.val === val && index >= start) {
-        return index;
-      }
+    while (current.next) {
+      let preNode = current;
       current = current.next;
-      index++;
+      if (current.val === val) {
+        preNode.next = current.next;
+        // p不动c重新走
+        current = preNode;
+        this.len--;
+      }
     }
-    return -1;
+  }
+  // 删除索引
+  removeOfIndex(idx) {
+    if (idx < 0 || idx > this.len) {
+      throw new Error("不存在");
+    }
+    if (idx === 0) {
+      this.head = this.head.next;
+      this.len--;
+      return;
+    }
+    let preNode = this.findOfIndex(idx - 1);
+    preNode.next = preNode.next.next;
+    this.len--;
+  }
+  reserve() {
+    let preNode = null;
+    let currentNode = this.head;
+    // TODO 理解
+    while (currentNode) {
+      let nextNode = currentNode.next;
+      currentNode.next = preNode;
+      preNode = currentNode;
+      currentNode = nextNode;
+    }
+    this.head = preNode;
   }
 }
 
@@ -108,4 +142,17 @@ let link = new LinkedList(1);
 link.append(2);
 link.append(5);
 link.insert(1, 9);
-console.log(link.indexOf(5, 1));
+link.append(5);
+link.append(5);
+link.append(5);
+link.append(3);
+link.append(4);
+
+let node_2 = link.find(2);
+// console.log("🚀 ~ file: SignalLink.js ~ line 80 ~ node_2", node_2, node_2.next);
+// console.log(link);
+// link.remove(5);
+// *0开始计数
+let node_9 = link.removeOfIndex(0);
+link.reserve();
+console.log(link);
