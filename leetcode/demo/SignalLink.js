@@ -2,7 +2,7 @@
  * @Author: Merlynr
  * @Date: 2022-07-24 17:47:39
  * @Last Modified by: Merlynr
- * @Last Modified time: 2022-07-24 19:17:08
+ * @Last Modified time: 2022-07-24 20:02:03
  */
 
 class Node {
@@ -39,7 +39,6 @@ class LinkedList {
     }
     this.len += 1;
   }
-
   insert(pos, val) {
     if (pos > this.len || pos < 0) {
       throw new Error("插入位置不合理");
@@ -63,11 +62,46 @@ class LinkedList {
     }
     this.len++;
   }
+  removeAt(pos) {
+    if (pos >= this.len || pos < 0) {
+      return new Error("结点位置不存在");
+    }
+    let current = this.head;
+    if (pos === 0) {
+      this.head = current.next;
+    } else {
+      let index = 0;
+      let prev = null;
+      while (index < pos) {
+        prev = current;
+        current = current.next;
+        index++;
+      }
+      prev.next = current.next; // 改变上一个节点的 next 指向
+      this.len--
+      return 
+    }
+    this.
+  }
+  indexOf(val, start = 0) {
+    if (start >= this.len) {
+      throw new Error("起始位置不合理");
+    }
+    let index = 0;
+    let current = this.head;
+    while (index < this.len) {
+      if (current.val === val && index >= start) {
+        return index;
+      }
+      current = current.next;
+      index++;
+    }
+    return -1;
+  }
 }
 
 let link = new LinkedList(1);
 link.append(2);
 link.append(5);
 link.insert(1, 9);
-console.log(link);
-debugger;
+console.log(link.indexOf(5, 1));
