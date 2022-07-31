@@ -5,8 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>WebSocket Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
     <script>
+      const worker_origin = new Worker(
+        "../../origin_accomplish/emptyWorker.js"
+      );
+      const workerScript = `self.onmessage = ({data})=>console.log("worker",data)`;
+      const workerScriptBlob = new Blob([workerScript]);
+      const workerScriptBlobUrl = URL.createObjectURL(workerScriptBlob);
+      const worker = new Worker(workerScriptBlobUrl);
+      worker.postMessage("blob worker script");
+
+      worker_origin.onerror = console.log;
+
       const ws = new WebSocket("ws://localhost:3000");
 
       ws.addEventListener("open", () => {
