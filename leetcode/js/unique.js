@@ -65,7 +65,7 @@ function unique5(arr) {
   }
   return tmpArr;
 }
-// hasOwnProperty // * 所有的都去重了
+// * done // hasOwnProperty // * 所有的都去重—了,根据对象的k-v进行顾虑
 function unique6(arr) {
   if (!Array.isArray(arr) || arr.length < 2) {
     return;
@@ -76,6 +76,39 @@ function unique6(arr) {
       ? false
       : (obj[typeof item + item] = true);
   });
+}
+function unique6_1(arr) {
+  if (!Array.isArray(arr) || arr.length < 2) {
+    return;
+  }
+  let obj = {};
+  return arr.filter(function (item, index, arr) {
+    return obj.hasOwnProperty(typeof item + item)
+      ? false
+      : (obj[typeof item + item] = 1);
+  });
+}
+// * done
+function unique7(arr) {
+  return arr.filter(function (item, index, arr) {
+    return arr.indexOf(item, 0) === index;
+  });
+}
+// * 创建一个空Map数据结构，遍历需要去重的数组，把数组的每一个元素作为key存到Map中。由于Map中不会出现相同的key值，所以最终得到的就是去重后的结果。
+function unique8(arr) {
+  let map = new Map();
+  let array = new Array(); // 数组用于返回结果
+  for (let i = 0; i < arr.length; i++) {
+    // 引用类型无法判断唯一
+    if (map.has(arr[i])) {
+      // 如果有该key值
+      map.set(arr[i], true);
+    } else {
+      map.set(arr[i], false); // 如果没有该key值
+      array.push(arr[i]);
+    }
+  }
+  return array;
 }
 // test
 var arr = [
@@ -104,4 +137,5 @@ var arr = [
   {},
 ];
 console.log(arr);
-console.log(unique6(arr));
+console.log(unique8(arr));
+debugger;
