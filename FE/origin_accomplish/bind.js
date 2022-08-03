@@ -1,17 +1,12 @@
-/**
- * @param  {} Fn 函数
- * @param  {} obj 上下文
- * @param  {} ...args 参数
- */
-// TODO 非bind
-function bind(Fn, obj, ...args) {
-  if (JSON.stringify(obj) === "{}" || JSON.stringify(obj) === undefined) {
-    obj = globalThis;
-  }
-  obj.tempFn = Fn;
-  let res = obj.tempFn(...args);
-  delete obj.tempFn;
-  return res;
+function Parent() {
+  this.name = "parent";
+  this.list = ["a"];
 }
-
-exports.bind = bind;
+Parent.prototype.sayHi = function () {
+  console.log("hi");
+};
+function Child() {}
+Child.prototype = new Parent();
+var child = new Child();
+console.log(child.name);
+child.sayHi();
