@@ -1,12 +1,10 @@
-function strReverse(str) {
-  if (str.length === 1) {
-    return str;
+(function () {
+  vector < int > tmp;
+  let m = 5,
+    n = 5;
+  for (let i = 0; i < m; i++) {
+    for (let j = 0; j < n; j++) {
+      temp.push_back(nums[i][j]);
+    }
   }
-  return str.slice(-1) + strReverse(str.slice(0, -1));
-}
-
-// strReverse("hello world");
-console.log(
-  "🚀 ~ file: test.js ~ line 5 ~ strReverse(hello world);",
-  strReverse("hello world")
-);
+})();
