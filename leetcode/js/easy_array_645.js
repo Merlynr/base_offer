@@ -12,4 +12,4 @@ var findErrorNums = function (nums) {
     }
   }
 };
-console.log(findErrorNums((nums = [1, 1])));
+console.log(findErrorNums((nums = [1, 2, 2, 4])));
