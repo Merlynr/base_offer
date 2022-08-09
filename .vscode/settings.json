@@ -1,5 +1,8 @@
 {
-    "cSpell.words": [
-        "nums"
-    ]
+  "cSpell.words": ["nums"],
+  "liveServer.settings.port": 5758,
+  "python.testing.pytestArgs": ["niuke"],
+  "python.testing.unittestEnabled": true,
+  "python.testing.pytestEnabled": false,
+  "python.testing.unittestArgs": ["-v", "-s", "./niuke", "-p", "*test*.py"]
 }

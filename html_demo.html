@@ -8,62 +8,59 @@
       content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
     />
     <style>
-      html {
-        font-size: 1px;
-      }
-      * {
-        padding: 0;
-        margin: 0;
-      }
-      .top_b {
-        border-bottom: 1px solid #e5e5e5;
-      }
-
-      .a,
-      .b {
+      /* 应用的动画为myfirst，一个动画周期为5秒，动画的速度曲线为linear，动画2秒后播放，播放次数为infinite，即无限循环，动画下一周期是否逆向播放取值alternate，即逆向播放 */
+      .container {
+        background-color: aqua;
+        column-gap: 20px;
+        resize: both;
+        overflow: auto;
+        -moz-column-gap: 400px; /* Firefox */
+        -webkit-column-gap: 20px; /* Safari 和 Chrome */
         box-sizing: border-box;
-        margin-top: 1rem;
-        padding: 1rem;
-        font-size: 1.4rem;
-      }
-
-      .a {
-        width: 100%;
-      }
-
-      .b {
-        background: #f5f5f5;
-        width: 100%;
+        -moz-box-sizing: border-box; /* Firefox */
+        -webkit-box-sizing: border-box; /* Safari */
+        width: 50%;
+        float: left;
+        border: 2px solid black;
+        outline: 2px solid red;
+        outline-offset: 15px;
       }
     </style>
     <script>
-      var viewport = document.querySelector("meta[name=viewport]");
-      //下面是根据设备像素设置viewport
-      if (window.devicePixelRatio == 1) {
-        viewport.setAttribute(
-          "content",
-          "width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
-        );
+      function openwin() {
+        window.open("page.html", "", "width=200,height=200");
       }
-      if (window.devicePixelRatio == 2) {
-        viewport.setAttribute(
-          "content",
-          "width=device-width,initial-scale=0.5, maximum-scale=0.5, minimum-scale=0.5, user-scalable=no"
-        );
+      function get_cookie(Name) {
+        var search = Name + "=";
+        var returnvalue = "";
+        if (document.cookie.length > 0) {
+          if (offset != -1) {
+            offset += search.length;
+            end = document.cookie.indexOf(";", offset);
+            if (end == -1) end = document.cookie.length;
+            returnvalue = unescape(document.cookie.substring(offset, end));
+          }
+        }
+        return returnvalue;
       }
-      if (window.devicePixelRatio == 3) {
-        viewport.setAttribute(
-          "content",
-          "width=device-width,initial-scale=0.3333333333333333, maximum-scale=0.3333333333333333, minimum-scale=0.3333333333333333, user-scalable=no"
-        );
+      function ladpopup() {
+        if (get_cookie("popped=yes")) {
+          openwin();
+          document.cookie = "popped=yes";
+        }
       }
-      var docEl = document.documentElement;
-      var fontsize = 32 * (docEl.clientWidth / 750) + "px";
-      docEl.style.fontSize = fontsize;
     </script>
   </head>
   <body>
-    <div class="top_b a">下面的底边宽度是虚拟1像素的</div>
-    <div class="b">上面的边框宽度是虚拟1像素的</div>
+    //加入body区：
+    <a href="page.html" οnclick="openwin()">open</a>即可。
+    <div class="container">
+      style=" width: 50px; height: 100px; background: #fff; border: 1px solid
+      black; " > 下面的底边宽度是虚拟1像素的
+      dsadasdasdasdaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+      dsadasdasdasdaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+      dsadasdasdasdaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    </div>
+    <!-- <div>上面的边框宽度是虚拟1像素的</div> -->
   </body>
 </html>
