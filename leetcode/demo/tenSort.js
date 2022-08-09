@@ -2,7 +2,7 @@
  * @Author: Merlynr
  * @Date: 2022-07-20 23:32:54
  * @Last Modified by: Merlynr
- * @Last Modified time: 2022-07-23 21:49:06
+ * @Last Modified time: 2022-08-08 23:38:40
  */
 
 exports.bubbleSort = bubbleSort;
@@ -373,5 +373,5 @@ let arr = num
   .split("")
   .map((_) => +_);
 // console.log(arr);
-// console.log(heapSort(arr, arr.length));
+console.log(quickSort_2(arr));
 // console.log(radixSort(arr, 9));
