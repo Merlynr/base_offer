@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>receiveMessage</title>
+  </head>
+  <body>
+    <div style="border: 1rem red solid">
+      <div style="width: 200px; height: 150px">hhhhhsss</div>
+    </div>
+    <div style="border: 1rem blue solid">
+      <div style="width: 200px; height: 150px">hhhhhsss</div>
+    </div>
+    <div style="border: 1rem black solid">
+      <div style="width: 200px; height: 150px">hhhhhsss</div>
+    </div>
+    <div style="border: 1rem red solid">
+      <div style="width: 200px; height: 150px">hhhhhsss</div>
+    </div>
+    <div style="border: 1rem blue solid">
+      <div style="width: 200px; height: 150px">hhhhhsss</div>
+    </div>
+    <div style="border: 1rem black solid">
+      <div style="width: 200px; height: 150px">hhhhhsss</div>
+    </div>
+    <div style="border: 1rem red solid">
+      <div style="width: 200px; height: 150px">hhhhhsss</div>
+    </div>
+    <div style="border: 1rem blue solid">
+      <div style="width: 200px; height: 150px">hhhhhsss</div>
+    </div>
+    <div style="border: 1rem black solid">
+      <div style="width: 200px; height: 150px">hhhhhsss</div>
+    </div>
+    <div style="border: 1rem red solid">
+      <div style="width: 200px; height: 150px">hhhhhsss</div>
+    </div>
+    <div style="border: 1rem blue solid">
+      <div style="width: 200px; height: 150px">hhhhhsss</div>
+    </div>
+    <div style="border: 1rem black solid">
+      <div style="width: 200px; height: 150px">hhhhhsss</div>
+    </div>
+    <script src="../debounce-throttle/throttle.js"></script>
+    <script type="text/javascript">
+      window.onscroll = throttle(readInfo, 1000);
+      function readInfo() {
+        let body = document.body;
+        // 网页可见区域
+        console.log("网页可见区域", body.clientWidth, body.clientHeight);
+        //   网页可见区域宽(包括边线的)
+        console.log(
+          "网页可见区域宽(包括边线的)",
+          body.offsetWidth,
+          body.offsetHeight
+        );
+        //   网页正文全文
+        console.log("网页正文全文", body.scrollWidth, body.scrollWidth);
+        // 网页正文部分（上，左）
+        console.log("网页正文部分", window.screenTop);
+        console.log("网页正文部分", window.screenLeft);
+        // 网页被卷去
+        console.log("网页被卷去", body.scrollTop);
+        console.log("网页被卷去", body.scrollLeft);
+        // 屏幕分辨率
+        console.log("屏幕分辨率", window.screen.height);
+        console.log("屏幕分辨率", window.screen.width);
+        //   屏幕可用工作区高度
+        console.log("屏幕可用工作区高度", window.screen.availHeight);
+        console.log("屏幕可用工作区高度", window.screen.availWidth);
+      }
+    </script>
+    <!-- <script src="./recevive.js"></script> -->
+  </body>
+</html>
