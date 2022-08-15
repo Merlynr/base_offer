@@ -17,12 +17,12 @@
       "name": "Launch Chrome",
       "request": "launch",
       "type": "chrome",
-      "url": "http://localhost:8800",
+      "url": "http://localhost:5758",
       "webRoot": "${workspaceFolder}"
     },
     {
       "name": "Attach to Chrome",
-      "port": 9222,
+      "port": 5758,
       "request": "attach",
       "type": "chrome",
       "webRoot": "${workspaceFolder}"
@@ -34,6 +34,13 @@
       "program": "${file}",
       "console": "integratedTerminal",
       "env": { "RUN_TYPE": "prod" }
+    },
+    {
+      "type": "pwa-msedge",
+      "request": "launch",
+      "name": "Launch Microsoft Edge and open the Edge DevTools",
+      "url": "http://localhost:5758",
+      "webRoot": "${workspaceFolder}"
     }
   ]
 }

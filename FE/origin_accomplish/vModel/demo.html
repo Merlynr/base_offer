@@ -1,0 +1,39 @@
+<div id="app">
+  {{msg}}
+  <p>{{p}}</p>
+  <button type="button" @click="write">{{Button}}</button>
+</div>
+<script type="text/javascript" src="index.js"></script>
+<script>
+  new Vue({
+    el: "#app",
+    data: {
+      demo: "HHHHHHHHHHHHHHHHHHHHHHHHHHHHhhhhh",
+      p: "pppp中信息",
+      Button: "Buttonssss",
+      msg: "你好",
+    },
+    beforeCreated() {
+      console.log("beforeCreated", this.$el, this.$data);
+    },
+    created() {
+      console.log("Created", this.$el, this.$data);
+    },
+    beforeMounted() {
+      console.log("beforeMounted", this.$el, this.$data);
+    },
+    mounted() {
+      console.log("mounted", this.$el, this.$data);
+    },
+    beforeUpdate() {},
+    update() {},
+    beforeDestroy() {},
+    destroy() {},
+    methods: {
+      write(e) {
+        this.msg = "你不好";
+        console.log("methods\n", this.msg);
+      },
+    },
+  });
+</script>
