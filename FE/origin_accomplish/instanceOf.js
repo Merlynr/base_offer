@@ -2,7 +2,7 @@
  * @Author: Merlynr
  * @Date: 2022-07-28 00:24:07
  * @Last Modified by: Merlynr
- * @Last Modified time: 2022-07-28 00:35:33
+ * @Last Modified time: 2022-08-15 11:18:18
  */
 
 // 原始
@@ -41,3 +41,8 @@ console.log(new_instanceOf(a, Object)); // true
 console.log(new_instanceOf(c, Foo)); // true
 console.log(new_instanceOf(d, child)); // true
 console.log(new_instanceOf(d, father)); // true
+
+function getType(obj) {
+  return Object.prototype.toString.call(obj).slice(8, -1).toLowerCase();
+}
+console.log(getType(a));
