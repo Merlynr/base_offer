@@ -2,11 +2,11 @@ async function sleep(delay) {
   return new Promise((resolve, reject) => setTimeout(resolve, delay));
 }
 
-// async function foo() {
-//   const t0 = Date.now();
-//   await sleep(1500);
-//   console.log(Date.now() - t0);
-// }
+async function foo() {
+  const t0 = Date.now();
+  await sleep(2500);
+  console.log(Date.now() - t0);
+}
 // foo();
 
 async function randomDelay(id) {

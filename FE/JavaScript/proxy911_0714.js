@@ -2,7 +2,7 @@
  * @Author: Merlynr
  * @Date: 2022-07-14 10:28:14
  * @Last Modified by: Merlynr
- * @Last Modified time: 2022-07-14 17:31:44
+ * @Last Modified time: 2022-08-16 14:17:48
  */
 const target = {
   name: "target",
@@ -31,7 +31,7 @@ target.name = "new target name";
 // handler.get();
 proxy.name;
 
-if (!"a" in window) {
+if (!"a" in globalThis) {
   var a = 1;
 }
 console.log(a);
