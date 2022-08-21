@@ -1,0 +1,27 @@
+{
+  "name": "learning_record",
+  "version": "1.0.0",
+  "description": "node learning_record",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "start": "node index.js",
+    "unit": "jest --config test/unit/jest.conf.js --coverage",
+    "test": "npm run unit",
+    "lint": "eslint --ext .js,.vue src test/unit",
+    "build": "node build/build.js"
+  },
+  "type": "module",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "chalk": "^5.0.1",
+    "cowsay": "^1.5.0",
+    "inquirer": "^9.1.0",
+    "lodash": "^4.17.21",
+    "minimist": "^1.2.6",
+    "npm-check-updates": "^16.0.5",
+    "progress": "^2.0.3",
+    "webpack": "^5.74.0"
+  }
+}

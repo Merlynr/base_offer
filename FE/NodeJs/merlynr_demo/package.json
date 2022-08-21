@@ -1,0 +1,22 @@
+{
+  "name": "merlynr_demo",
+  "version": "1.0.0",
+  "description": "plan and test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Merlynr",
+    "demo"
+  ],
+  "author": {
+    "name": "Merlynr",
+    "email": "lcq1013962426@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "license": "ISC"
+}
