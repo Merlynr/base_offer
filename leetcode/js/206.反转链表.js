@@ -68,7 +68,6 @@
  * @param {ListNode} head
  * @return {ListNode}
  */
-// TODO: 未理解
 var reverseList = function (head) {
   let [pre, node] = [null, head];
   while (node) {
