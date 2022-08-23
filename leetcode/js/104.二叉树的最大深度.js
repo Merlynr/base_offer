@@ -49,14 +49,14 @@
  *然后以此类推，一直比较到深度最大的
  */
 var maxDepth = function (root) {
-  if (!root) return root;
-  let res = 1;
-  const dfs = (root, depth = res) => {
-    if (!root.left && !root.right) res = Math.max(res, depth);
+  if (!root) return 0;
+  let dep = 1;
+  const dfs = (root, depth) => {
+    if (!root.right && !root.left) dep = Math.max(dep, depth);
     if (root.left) dfs(root.left, depth + 1);
     if (root.right) dfs(root.right, depth + 1);
   };
-  dfs(root, res);
-  return res;
+  dfs(root, dep);
+  return dep;
 };
 // @lc code=end
