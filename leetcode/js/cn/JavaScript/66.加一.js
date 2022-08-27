@@ -10,18 +10,5 @@
  * @return {number[]}
  */
 var plusOne = function (digits) {
-  let len = digits.length,
-    jw = 1;
-  for (let i = len - 1; i >= 0; i--) {
-    if (digits[i] === 9) {
-      digits[i] = 0;
-      jw = 1;
-      continue;
-    } else {
-      digits[i] += 1;
-      break;
-    }
-  }
-  if (digits[0] === 0) digits.unshift(1);
-  return digits;
+  return (BigInt(digits.join("")) + 1n).toString().split("");
 };
