@@ -19,16 +19,15 @@ import { TreeNode } from "algm";
  * @return {number[]}
  */
 var inorderTraversal = function (root) {
-  const res = [],
-    stack = [];
-  while (root || stack.length) {
-    while (root) {
-      stack.push(root);
-      root = root.left;
+  const res = [];
+  const inorder = (root) => {
+    if (!root) {
+      return;
     }
-    root = stack.pop();
+    inorder(root.left);
     res.push(root.val);
-    root = root.right;
-  }
+    inorder(root.right);
+  };
+  inorder(root);
   return res;
 };
