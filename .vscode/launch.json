@@ -33,7 +33,9 @@
       "request": "launch",
       "program": "${file}",
       "console": "integratedTerminal",
-      "env": { "RUN_TYPE": "prod" }
+      "env": {
+        "RUN_TYPE": "prod"
+      }
     },
     {
       "type": "pwa-msedge",
@@ -41,6 +43,13 @@
       "name": "Launch Microsoft Edge and open the Edge DevTools",
       "url": "http://localhost:5758",
       "webRoot": "${workspaceFolder}"
+    },
+    {
+      "name": "Dynamic Python: File",
+      "type": "python",
+      "request": "launch",
+      "program": "${file}",
+      "justMyCode": true
     }
   ]
 }
