@@ -30,3 +30,6 @@ class Solution:
             return
         self.dfs(root.left, targetSum,path)
         self.dfs(root.right, targetSum,path)
+s= Solution()
+s.pathSum( [5,4,8,11,null,13,4,7,2,null,null,5,1],22)
+print("sdas")
